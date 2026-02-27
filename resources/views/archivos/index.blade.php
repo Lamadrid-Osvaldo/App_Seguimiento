@@ -46,6 +46,9 @@
         </div>
 
         <div class="col-md-8">
+            <a href="{{ url('/') }}" class="btn btn-sm btn-light border shadow-sm">
+            <i class="bi bi-house-door-fill me-1"></i> Ir al Inicio
+        </a>
             <div class="card shadow-sm border-0">
                 <div class="card-header bg-white py-3 border-bottom">
                     <h5 class="mb-0 fw-bold text-dark">

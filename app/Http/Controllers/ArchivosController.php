@@ -38,12 +38,14 @@ class ArchivosController extends Controller
     if($request->hasFile('archivo_file')) {
         $file = $request->file('archivo_file');
         
-        // 1. Limpiamos el nombre (evitar eñes y espacios que rompen enlaces)
+        // 1. Limpiamos el nombre original para evitar problemas con caracteres especiales
         $nombreOriginal = $file->getClientOriginalName();
 
         // 2. Guardamos físicamente en storage/app/public/archivos
         // El método storeAs ya sabe que si usas el disco 'public', debe ir a esa carpeta
-        $nombreSistema = time() . '_' . $nombreOriginal;
+        date_default_timezone_set('America/Bogota');
+        $date = date('Y-m-d-H-i-s');
+        $nombreSistema = $date . '_' . $nombreOriginal;
         $file->storeAs('archivosme', $nombreSistema, 'public');
 
         // 3. Obtenemos el tipo (extensión o mime)
@@ -94,16 +96,15 @@ class ArchivosController extends Controller
     {
         $archivo = archivos::findOrFail($nis);
 
-        // 2. Borrar el archivo físico del disco 'public'
-        // $archivo->ruta contiene "archivosme/nombre_archivo.pdf"
+        //Borrar el archivo físico del disco 'public'
         if (Storage::disk('public')->exists($archivo->ruta)) {
             Storage::disk('public')->delete($archivo->ruta);
-        }
+        }                               
 
         // 3. Borrar el registro de la base de datos
         $archivo->delete();
 
-        // 4. Redirigir con mensaje de éxito
+        //Mensaje
         return redirect()->route('archivos.index')
             ->with('success', 'Archivo y registro eliminados correctamente.');
     }

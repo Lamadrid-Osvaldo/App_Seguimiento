@@ -7,9 +7,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <style>
-        body { background-color: #f8f9fa; }
+        body { background-color: #f8f9fa; display: flex; min-height: 100vh; flex-direction: column; }
         .navbar-sena { background-color: #39a900; } /* Verde SENA */
         .dropdown-item:hover { background-color: #39a900; color: white; }
+        
+        /* Estilo para Sidebar si decides usarlo, o barra superior fija */
+        .navbar-brand fw-bold { letter-spacing: 1px; }
+        .user-name { color: white; font-weight: 500; margin-right: 15px; }
     </style>
 </head>
 <body>
@@ -23,12 +27,12 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fw-bold text-white" href="#" id="gestionarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-layer-forward me-1"></i> Gestionar Tablas
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end shadow border-0" aria-labelledby="gestionarDropdown" style="min-width: 250px;">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle fw-bold text-white" href="#" id="gestionarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-layer-forward me-1"></i> Gestionar Tablas
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow border-0" aria-labelledby="gestionarDropdown" style="min-width: 250px;">
                         <li><h6 class="dropdown-header text-uppercase fw-bold text-primary">Personas</h6></li>
                         <li><a class="dropdown-item" href="{{ route('aprendices.index') }}"><i class="bi bi-people me-2"></i> Aprendices</a></li>
                         <li><a class="dropdown-item" href="{{ route('instructores.index') }}"><i class="bi bi-person-badge me-2"></i> Instructores</a></li>
@@ -44,12 +48,31 @@
                         
                         <li><hr class="dropdown-divider"></li>
                         
+                        <li><h6 class="dropdown-header text-uppercase fw-bold text-primary">Documentación</h6></li>
+                        <li><a class="dropdown-item" href="{{ route('archivos.index') }}"><i class="bi bi-file-earmark-pdf me-2"></i> Archivos</a></li>
+                        
+                        <li><hr class="dropdown-divider"></li>
+                        
                         <li><h6 class="dropdown-header text-uppercase fw-bold text-primary">Otros</h6></li>
                         <li><a class="dropdown-item" href="{{ route('entecoformadores.index') }}"><i class="bi bi-briefcase me-2"></i> Ente Coformadores</a></li>
                         <li><a class="dropdown-item" href="{{ route('regionales.index') }}"><i class="bi bi-map me-2"></i> Regionales</a></li>
-                        <li><a class="dropdown-item" href="{{ route('rolesadministrativos.index')}}"><i class="bi bi-question-circle me-2"></i> Roles Administrativos</a></li>
+                        <li><a class="dropdown-item" href="{{ route('rolesadministrativos.index') }}"><i class="bi bi-question-circle me-2"></i> Roles Administrativos</a></li>
                     </ul>
-                </li>
+                    </li>
+
+                    @auth
+                    <li class="nav-item ms-3 border-start ps-3 d-flex align-items-center">
+                        <span class="user-name d-none d-md-inline">
+                            <i class="bi bi-person-circle me-1"></i> {{ Auth::user()->nombre }}
+                        </span>
+                        <form action="{{ route('logout') }}" method="POST" class="m-0">
+                            @csrf
+                            <button type="submit" class="btn btn-sm btn-light text-danger fw-bold shadow-sm">
+                                <i class="bi bi-box-arrow-right"></i> Salir
+                            </button>
+                        </form>
+                    </li>
+                    @endauth
                 </ul>
             </div>
         </div>
@@ -63,29 +86,23 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-    // Tu script de SweetAlert2 para eliminar
-    document.querySelectorAll('.btn-borrar').forEach(boton => {
-        boton.addEventListener('click', function(e) {
-            e.preventDefault();
-            const formulario = this.closest('.form-eliminar');
-
-            Swal.fire({
-                title: '¿Estás seguro?',
-                text: "¡No podrás revertir esta acción!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#d33', 
-                cancelButtonColor: '#6c757d', 
-                confirmButtonText: 'Sí, eliminar registro',
-                cancelButtonText: 'Cancelar',
-                reverseButtons: true 
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    formulario.submit();
-                }
-            })
+        document.querySelectorAll('.btn-borrar').forEach(boton => {
+            boton.addEventListener('click', function(e) {
+                e.preventDefault();
+                const formulario = this.closest('.form-eliminar');
+                Swal.fire({
+                    title: '¿Estás seguro?',
+                    text: "¡No podrás revertir esta acción!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33', 
+                    confirmButtonText: 'Sí, eliminar',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) { formulario.submit(); }
+                })
+            });
         });
-    });
     </script>
 </body>
 </html>
