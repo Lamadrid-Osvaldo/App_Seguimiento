@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ArchivosController;
 use App\Http\Controllers\TiposdocumentosController;
@@ -51,6 +51,8 @@ Route::resource('eps', EpsController::class);
 Route::resource('regionales',RegionalesController::class);
 
 Route::resource('archivos', ArchivosController::class);
+
+Route::resource('usuarios', UsuariosController::class);
 
     // También tus otras rutas privadas
     Route::get('/dashboard', function () {
