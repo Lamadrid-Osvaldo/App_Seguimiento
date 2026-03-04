@@ -27,8 +27,9 @@ class RecuperarPassController extends Controller
 
         // Guardar el token 
         DB::table('tblolvide_contrasena_tokens')->updateOrInsert(
-            ['email' => $request->email], 
-            ['token' => $token, 'created_at' => now()]
+            ['email' => $request->email],
+            ['token' => $token,
+             'created_at' => now()]
         );
 
         // Enviar el correo
