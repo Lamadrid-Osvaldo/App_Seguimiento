@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
+use App\Notifications\Notificationes;
 use App\Models\usuarios;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;      
@@ -40,11 +42,13 @@ class UsuariosController extends Controller
         ]);
         
 
-        usuarios::create([
+         $usuarios = usuarios::create([
             'nombre' => $request->nombre,
             'email' => $request->email,
             'contrasena' => Hash::make($request->contrasena),
         ]);
+
+        $usuarios->notify(new Notificationes($usuarios));
 
         return redirect()->route('usuarios.index')->with('success', 'Usuario creado exitosamente.');
     }

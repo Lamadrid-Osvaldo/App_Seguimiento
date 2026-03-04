@@ -49,7 +49,7 @@
 
                 </div>
                 <div class="card-footer text-center py-3 bg-light">
-                    <small class="text-muted">¿No tienes cuenta? Contacta al administrador</small>
+                    <a href="{{ route('password.request') }}">¿Olvidaste tu contraseña?</a>
                 </div>
             </div>
         </div>

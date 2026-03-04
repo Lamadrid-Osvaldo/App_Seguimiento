@@ -38,6 +38,7 @@
                         <li><a class="dropdown-item" href="{{ route('instructores.index') }}"><i class="bi bi-person-badge me-2"></i> Instructores</a></li>
                         <li><a class="dropdown-item" href="{{ route('tiposdocumentos.index') }}"><i class="bi bi-card-heading me-2"></i> Tipos de Documento</a></li>
                         <li><a class="dropdown-item" href="{{ route('eps.index') }}"><i class="bi bi-hospital me-2"></i> EPS</a></li>
+                        <li><a class="dropdown-item" href="{{ route('usuarios.index') }}"><i class="bi bi-people me-2"></i> Usuarios</a></li>
                         
                         <li><hr class="dropdown-divider"></li>
                         

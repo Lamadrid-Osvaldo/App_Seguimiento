@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RecuperarPassController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ArchivosController;
@@ -26,10 +27,26 @@ Route::get('/', function () {
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 
+
+
+// Formulario donde pone el correo 
+Route::get('olvide-password', function () {
+    return view('usuarios.olvidepass');
+})->name('password.request'); 
+
+// Acción de enviar el correo 
+Route::post('olvide-password', [RecuperarPassController::class, 'enviarEnlace'])->name('password.email');
+
+// El link que el usuario abre desde su Gmail
+Route::get('resetear-password/{token}', [RecuperarPassController::class, 'mostrarFormularioReset'])->name('password.reset');
+
+// Acción de guardar la nueva clave 
+Route::post('actualizar-password', [RecuperarPassController::class, 'actualizarClave'])->name('password.update');
+
 // --- RUTAS PROTEGIDAS (Solo si pasas por el Login) ---
 Route::middleware(['auth'])->group(function () {
     
-    // Aquí es donde debes poner la ruta de EPS
+    
     Route::resource('rolesadministrativos', RolesadministrativosController::class);
 
 Route::resource('aprendices', AprendicesController::class);
