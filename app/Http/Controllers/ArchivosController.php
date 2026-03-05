@@ -78,15 +78,47 @@ class ArchivosController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $archivo = archivos::findOrFail($id);
+        return view('archivos.edit', compact('archivo'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $nis)
     {
-        //
+        $request->validate([
+            'archivo_file' => 'nullable|file|mimes:pdf,jpg,png,docx|max:5120',
+        ]);
+
+        $archivo = archivos::findOrFail($nis);
+
+        if($request->hasFile('archivo_file')) {
+            // 1. Borrar el archivo físico anterior
+            if (Storage::disk('public')->exists($archivo->ruta)) {
+                Storage::disk('public')->delete($archivo->ruta);
+            }
+
+            // 2. Subir el nuevo archivo
+            $file = $request->file('archivo_file');
+            $nombreOriginal = $file->getClientOriginalName();
+            date_default_timezone_set('America/Bogota');
+            $date = date('Y-m-d-H-i-s');
+            $nombreSistema = $date . '_' . $nombreOriginal;
+            $file->storeAs('archivosme', $nombreSistema, 'public');
+            $tipo = $file->getClientOriginalExtension();
+
+            // 3. Actualizar el registro en la BD
+            $archivo->update([
+                'nombre_original' => $nombreOriginal,
+                'ruta' => 'archivosme/' . $nombreSistema,
+                'tipo' => $tipo,
+                'updated_at' => now(),
+            ]);
+        }
+
+        return redirect()->route('archivos.index')
+            ->with('success', 'Archivo actualizado exitosamente');
     }
 
     /**

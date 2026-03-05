@@ -31,6 +31,7 @@
                             <th>Nombre Completo</th>
                             <th>Contacto</th>
                             <th>Correo Institucional</th>
+                            <th>Correo Personal</th>
                             <th class="text-center">Sexo</th>
                             <th>EPS / Ficha</th>
                             <th class="text-center" style="width: 220px;">Acciones</th>
@@ -55,6 +56,12 @@
                                 <a href="mailto:{{ $aprendiz->correoinstitucional }}" class="text-decoration-none small">
                                     {{ $aprendiz->correoinstitucional }}
                                 </a>
+
+                            <td>
+                                <a href="mailto:{{ $aprendiz->correopersonal }}" class="text-decoration-none small">
+                                    {{ $aprendiz->correopersonal }}
+                                </a>
+
                             </td>
                             <td class="text-center">
                                 @if($aprendiz->sexo == 1)

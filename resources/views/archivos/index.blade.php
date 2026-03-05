@@ -89,6 +89,9 @@
                                                 <i class="bi bi-eye-fill"></i>
                                             </a>
                                             
+                                            <a href="{{ route('archivos.edit', $archivo->nis) }}" class="btn btn-sm btn-outline-warning" title="Editar">
+                                                <i class="bi bi-pencil-fill"></i>
+                                            </a>
                                             <form action="{{ route('archivos.destroy', $archivo->nis) }}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')

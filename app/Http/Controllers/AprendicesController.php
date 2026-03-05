@@ -15,7 +15,8 @@ class AprendicesController extends Controller
      */
     public function index()
     {
-        $aprendices = aprendices:: all();
+        $aprendices = aprendices::all();
+        
         return view('aprendices.index', compact('aprendices'));
     }
 
