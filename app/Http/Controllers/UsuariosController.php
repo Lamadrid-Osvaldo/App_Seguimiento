@@ -11,7 +11,18 @@ use Illuminate\Support\Facades\Hash;
 class UsuariosController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Controlador para gestionar los usuarios, incluyendo operaciones CRUD (Crear, Leer, Actualizar, Eliminar).
+     * 
+     * Cada método corresponde a una acción específica para manejar los datos de los usuarios en la aplicación.
+     * 
+     * - index(): Muestra una lista de todos los usuarios.
+     * - create(): Muestra un formulario para crear un nuevo usuario.
+     * - store(): Valida y guarda un nuevo usuario en la base de datos y envía una notificación al usuario creado.
+     * - show(): Muestra los detalles de un usuario específico.
+     * - edit(): Muestra un formulario para editar un usuario existente.
+     * - update(): Valida y actualiza un usuario existente en la base de datos.
+     * - destroy(): Elimina un usuario específico de la base de datos.
+     * 
      */
     public function index()
     {

@@ -12,7 +12,19 @@ class Notificationes extends Notification
     use Queueable;
 
     /**
-     * Create a new notification instance.
+     * Clase de notificación para enviar un correo electrónico al usuario cuando se registre con éxito en la aplicación.
+     * El correo incluye un saludo personalizado, información sobre el registro exitoso, el número de identificación
+     * (NIS) registrado y un enlace para acceder al sistema.
+     * La notificación se envía a través del canal de correo electrónico (mail) y utiliza la clase MailMessage para
+     * construir el contenido del correo.
+     * Cada método en esta clase tiene una función específica:
+     * - via(): Define los canales de entrega de la notificación (en este caso, solo correo electrónico).
+     * - toMail(): Construye el mensaje de correo electrónico que se enviará al usuario, incluyendo el asunto, saludo,
+     *  líneas de contenido y un botón de acción.
+     * - toArray(): Proporciona una representación en array de la notificación, que puede ser utilizada para almacenar
+     *  la notificación en la base de datos o para otros fines, aunque en este caso no se ha implementado ningún contenido
+     *  específico en el array.
+     * 
      */
     public function __construct()
     {

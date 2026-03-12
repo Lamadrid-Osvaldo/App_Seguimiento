@@ -12,6 +12,21 @@ use App\Models\usuarios;
 
 class RecuperarPassController extends Controller
 {
+    /**
+     * Controlador para gestionar el proceso de recuperación de contraseña, incluyendo:
+     * 1. Enviar un enlace de restablecimiento al correo del usuario.
+     * 2. Mostrar un formulario para que el usuario ingrese su nueva contraseña.
+     * 3. Validar y actualizar la nueva contraseña en la base de datos.
+     * 
+     * Cada método corresponde a una acción específica en el proceso de recuperación de contraseña.
+     * 
+     * - enviarEnlace(): Valida el correo del usuario, genera un token y envía un enlace de restablecimiento.
+     * - mostrarFormularioReset(): Muestra el formulario para que el usuario ingrese su nueva contraseña.
+     * - actualizarClave(): Valida el token y el correo, actualiza la contraseña en la base de datos y elimina el token.
+     * 
+     */
+
+
     // 1. Enviar el correo con el link
     public function enviarEnlace(Request $request)
     {

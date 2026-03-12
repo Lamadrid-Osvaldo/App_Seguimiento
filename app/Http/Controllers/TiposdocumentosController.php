@@ -8,7 +8,18 @@ use Illuminate\Http\Request;
 class TiposdocumentosController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Controlador para gestionar los tipos de documentos, incluyendo operaciones CRUD (Crear, Leer, Actualizar, Eliminar).
+     * 
+     * Cada método corresponde a una acción específica para manejar los datos de los tipos de documentos en la aplicación.
+     * 
+     * - index(): Muestra una lista de todos los tipos de documentos.
+     * - create(): Muestra un formulario para crear un nuevo tipo de documento.
+     * - store(): Valida y guarda un nuevo tipo de documento en la base de datos.
+     * - show(): Muestra los detalles de un tipo de documento específico.
+     * - edit(): Muestra un formulario para editar un tipo de documento existente.
+     * - update(): Valida y actualiza un tipo de documento existente en la base de datos.
+     * - destroy(): Elimina un tipo de documento específico de la base de datos.
+     * 
      */
     public function index()
     {

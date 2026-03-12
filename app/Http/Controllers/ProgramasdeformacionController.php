@@ -8,7 +8,18 @@ use Illuminate\Http\Request;
 class ProgramasdeformacionController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Controlador para gestionar los programas de formación, incluyendo operaciones CRUD (Crear, Leer, Actualizar, Eliminar).
+     * 
+     * Cada método corresponde a una acción específica para manejar los datos de los programas de formación en la aplicación.
+     * 
+     * - index(): Muestra una lista de todos los programas de formación.
+     * - create(): Muestra un formulario para crear un nuevo programa de formación.
+     * - store(): Valida y guarda un nuevo programa de formación en la base de datos.
+     * - show(): Muestra los detalles de un programa de formación específico.
+     * - edit(): Muestra un formulario para editar un programa de formación existente.
+     * - update(): Valida y actualiza un programa de formación existente en la base de datos.
+     * - destroy(): Elimina un programa de formación específico de la base de datos.
+     * 
      */
     public function index()
     {

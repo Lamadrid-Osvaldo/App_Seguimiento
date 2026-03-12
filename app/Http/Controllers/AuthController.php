@@ -7,6 +7,13 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+    /**
+     * Controlador de autenticación que maneja el login y logout de usuarios. 
+     * Este controlador asume que tienes un modelo User configurado para usar la tabla 'usuarios' y que has ajustado
+     *  el campo de contraseña a 'contrasena' en ese modelo.
+     * 
+     */
+
     // Muestra el formulario de login
     public function showLogin()
     {
@@ -19,7 +26,7 @@ class AuthController extends Controller
         // Validamos los datos que vienen del formulario
         $credentials = $request->validate([
             'email' => 'required|email',
-            'contrasena' => 'required', // El nombre que usaste en tu tabla
+            'contrasena' => 'required', 
         ]);
 
         // Intentamos autenticar. 

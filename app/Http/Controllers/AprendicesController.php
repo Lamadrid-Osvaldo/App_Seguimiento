@@ -10,9 +10,27 @@ use Illuminate\Http\Request;
 
 class AprendicesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
+    /*
+     * Controlador de aprendices, con métodos para listar, crear, mostrar, editar, actualizar y eliminar aprendices.
+     * 
+     * index(): Obtiene todos los aprendices y los muestra en la vista 'aprendices.index'.
+     * 
+     * create(): Obtiene los tipos de documentos, EPS y fichas de caracterización para mostrarlos en el formulario de creación de aprendiz.
+     * 
+     * store(Request $request): Valida y almacena un nuevo aprendiz en la base de datos, luego redirige a la lista de aprendices con un 
+     * mensaje de éxito.
+     * 
+     * show(string $nis): Muestra los detalles de un aprendiz específico, incluyendo su tipo de documento, EPS y ficha de caracterización.
+     * 
+     * edit(string $nis): Obtiene los datos de un aprendiz específico y las listas de tipos de documentos, EPS y fichas de caracterización
+     * para mostrarlos en el formulario de edición.
+     * 
+     * update(Request $request, string $nis): Valida y actualiza los datos de un aprendiz específico en la base de datos, luego redirige a 
+     * la lista de aprendices con un mensaje de éxito.
+     * 
+     * destroy(string $id): Elimina un aprendiz específico de la base de datos, luego redirige a la lista de aprendices con un mensaje de éxito.
      */
+
     public function index()
     {
         $aprendices = aprendices::all();
@@ -25,7 +43,7 @@ class AprendicesController extends Controller
      */
     public function create()
     {
-        $tiposDocumentos = tiposdocumentos::all(); // O el nombre de tu modelo
+        $tiposDocumentos = tiposdocumentos::all(); 
         $eps = eps::all();
         $fichas = fichasdecaracterizacion::all();
 

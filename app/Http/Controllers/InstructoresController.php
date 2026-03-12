@@ -12,7 +12,18 @@ use Illuminate\Http\Request;
 class InstructoresController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Controlador para gestionar los instructores, incluyendo operaciones CRUD (Crear, Leer, Actualizar, Eliminar).
+     * 
+     * Cada método corresponde a una acción específica para manejar los datos de los instructores en la aplicación.
+     * 
+     * - index(): Muestra una lista de todos los instructores.
+     * - create(): Muestra un formulario para crear un nuevo instructor.
+     * - store(): Valida y guarda un nuevo instructor en la base de datos.
+     * - show(): Muestra los detalles de un instructor específico.
+     * - edit(): Muestra un formulario para editar un instructor existente.
+     * - update(): Valida y actualiza un instructor existente en la base de datos.
+     * - destroy(): Elimina un instructor específico de la base de datos.
+     * 
      */
     public function index()
     {

@@ -8,7 +8,18 @@ use Illuminate\Http\Request;
 class RegionalesController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Controlador para gestionar las regionales, incluyendo operaciones CRUD (Crear, Leer, Actualizar, Eliminar).
+     * 
+     * Cada método corresponde a una acción específica para manejar los datos de las regionales en la aplicación.
+     * 
+     * - index(): Muestra una lista de todas las regionales.
+     * - create(): Muestra un formulario para crear una nueva regional.
+     * - store(): Valida y guarda una nueva regional en la base de datos.
+     * - show(): Muestra los detalles de una regional específica.
+     * - edit(): Muestra un formulario para editar una regional existente.
+     * - update(): Valida y actualiza una regional existente en la base de datos.
+     * - destroy(): Elimina una regional específica de la base de datos.
+     * 
      */
     public function index()
     {

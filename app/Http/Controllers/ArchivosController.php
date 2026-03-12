@@ -10,7 +10,24 @@ use Illuminate\Http\Request;
 class ArchivosController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Controlador de archivos, con métodos para listar, crear, mostrar, editar, actualizar y eliminar archivos.
+     * 
+     * index(): Obtiene todos los archivos y los muestra en la vista 'archivos.index'.
+     * 
+     * create(): Muestra el formulario para subir un nuevo archivo.
+     * 
+     * store(Request $request): Valida y almacena un nuevo archivo en el sistema de archivos y en la base de datos,
+     *  luego redirige a la lista de archivos con un mensaje de éxito.
+     * 
+     * show(string $nis): Muestra los detalles de un archivo específico (no implementado en este caso).
+     * 
+     * edit(string $nis): Muestra el formulario para editar un archivo específico.
+     * 
+     * update(Request $request, string $nis): Valida y actualiza un archivo específico en el sistema de archivos
+     * y en la base de datos, luego redirige a la lista de archivos con un mensaje de éxito.
+     * 
+     * destroy(string $nis): Elimina un archivo específico del sistema de archivos y de la base de datos,
+     * luego redirige a la lista de archivos con un mensaje de éxito.
      */
     public function index()
     {
@@ -76,9 +93,9 @@ class ArchivosController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $nis)
     {
-        $archivo = archivos::findOrFail($id);
+        $archivo = archivos::findOrFail($nis);
         return view('archivos.edit', compact('archivo'));
     }
 

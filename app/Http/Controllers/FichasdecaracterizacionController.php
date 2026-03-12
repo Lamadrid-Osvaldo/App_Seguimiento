@@ -12,7 +12,18 @@ use Illuminate\Http\Request;
 class FichasdecaracterizacionController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Controlador para gestionar las fichas de caracterización, incluyendo operaciones CRUD (Crear, Leer, Actualizar, Eliminar).
+     * 
+     * Cada método corresponde a una acción específica para manejar los datos de las fichas de caracterización en la aplicación.
+     * 
+     * - index(): Muestra una lista de todas las fichas de caracterización.
+     * - create(): Muestra un formulario para crear una nueva ficha de caracterización.
+     * - store(): Valida y guarda una nueva ficha de caracterización en la base de datos.
+     * - show(): Muestra los detalles de una ficha de caracterización específica.
+     * - edit(): Muestra un formulario para editar una ficha de caracterización existente.
+     * - update(): Valida y actualiza una ficha de caracterización existente en la base de datos.
+     * - destroy(): Elimina una ficha de caracterización específica de la base de datos.
+     * 
      */
     public function index()
     {

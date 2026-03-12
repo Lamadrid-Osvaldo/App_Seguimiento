@@ -8,7 +8,17 @@ use Illuminate\Http\Request;
 class EpsController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Controlador para gestionar las EPS, incluyendo operaciones CRUD (Crear, Leer, Actualizar, Eliminar).
+     * 
+     * Cada método corresponde a una acción específica para manejar los datos de las EPS en la aplicación.
+     * 
+     * - index(): Muestra una lista de todas las EPS.
+     * - create(): Muestra un formulario para crear una nueva EPS.
+     * - store(): Valida y guarda una nueva EPS en la base de datos.
+     * - show(): Muestra los detalles de una EPS específica.
+     * - edit(): Muestra un formulario para editar una EPS existente.
+     * - update(): Valida y actualiza una EPS existente en la base de datos.
+     * - destroy(): Elimina una EPS específica de la base de datos.
      */
     public function index()
     {

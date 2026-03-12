@@ -8,7 +8,18 @@ use Illuminate\Http\Request;
 class EntecoformadoresController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Controlador para gestionar los entecoformadores, incluyendo operaciones CRUD (Crear, Leer, Actualizar, Eliminar).
+     * 
+     * Cada método corresponde a una acción específica para manejar los datos de los entecoformadores en la aplicación.
+     * 
+     * - index(): Muestra una lista paginada de todos los entecoformadores.
+     * - create(): Muestra un formulario para crear un nuevo entecoformador.
+     * - store(): Valida y guarda un nuevo entecoformador en la base de datos.
+     * - show(): Muestra los detalles de un entecoformador específico.
+     * - edit(): Muestra un formulario para editar un entecoformador existente.
+     * - update(): Valida y actualiza un entecoformador existente en la base de datos.
+     * - destroy(): Elimina un entecoformador específico de la base de datos.
+     * 
      */
     public function index()
     {
