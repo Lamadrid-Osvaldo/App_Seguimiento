@@ -46,7 +46,7 @@ class EntecoformadoresController extends Controller
             'razonsocial' => 'required|string|max:100',
             'direccion' => 'nullable|string|max:200',
             'telefono' => 'nullable|string|max:50',
-            'correoinstitucional' => 'nullable|string|max:50',
+            'correoinstitucional' => 'nullable|string|email|max:50',
         ]);
 
 
@@ -90,7 +90,7 @@ class EntecoformadoresController extends Controller
             'razonsocial' => 'required|string|max:100',
             'direccion' => 'nullable|string|max:200',
             'telefono' => 'nullable|string|max:50',
-            'correoinstitucional' => 'nullable|string|max:50',
+            'correoinstitucional' => 'nullable|string|email|max:50',
         ]);
 
         $entecoformadores = entecoformadores::findOrFail($nis);
